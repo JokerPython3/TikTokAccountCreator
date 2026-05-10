@@ -605,6 +605,7 @@ class TikTokAccountCreator:
             
                 try:
                     sessionid = response.json()["data"]["session_key"]
+                    TikTokAccountCreator.success +=1
                     os.system('cls' if os.name == 'nt' else 'clear')
                     print("Success -> {} | Send Code -> {} | Retry -> {} | Get Code -> {} | Error Get Code -> {} | Retry Email -> {} | Retry Register -> {} ".format(TikTokAccountCreator.success,TikTokAccountCreator.send_code,TikTokAccountCreator.retry,TikTokAccountCreator.get_code,TikTokAccountCreator.error_code,TikTokAccountCreator.retry_email,TikTokAccountCreator.retry_register))
                    
@@ -617,7 +618,7 @@ class TikTokAccountCreator:
                         await f.write(json.dumps({"username":username,"id":id,"sessionid":sessionid,"password":self.password,"email":email_un,"username_tmail":username_tmail,"password_tmail":password_tmail,'code':code,"device":device,"programmer":"@ntroatro","programmer_name":"S1"}, indent=4) + "\n")
                     async with aiofiles.open(self.data + "session.txt","a") as f:
                         await f.write(sessionid + "\n")
-                    TikTokAccountCreator.success +=1
+                    
                    
                     
 
